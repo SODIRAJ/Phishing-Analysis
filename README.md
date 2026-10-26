@@ -11,7 +11,6 @@ This project demonstrates the end-to-end incident response lifecycle for triagin
 | :--- | :--- |
 | **Forensic Analysis** | Email Header Parsing, Reverse DNS (rDNS) Verification |
 | **Threat Intelligence** | VirusTotal, Domain Reputation Triage |
-| **Dynamic Sandboxing** | URL2PNG Visual Intent Inspection |
 
 ---
 
