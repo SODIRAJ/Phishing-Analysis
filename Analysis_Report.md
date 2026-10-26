@@ -1,8 +1,7 @@
 ## Section 1: Email Description and Artifacts Collected
 
 ### Email Description
-The suspicious message is themed as a critical security alert masquerading as an official notification from Outlook. The email body claims that the target mailbox is at risk, utilizing a high-urgency psychological pretext ("Act NOW!") to induce panic and force immediate user compliance. The underlying objective of this campaign is malicious credential harvesting via a fake Outlook Web Access (OWA) login page. 
-
+The suspicious message is themed as a critical security alert masquerading as an official notification from Outlook. The email body claims that the target mailbox is at risk, utilizing a high-urgency psychological pretext ("Act NOW!") to induce panic and force immediate user compliance.
 ---
 
 ### Artifacts Collected
@@ -34,20 +33,25 @@ The suspicious message is themed as a critical security alert masquerading as an
 ## Section 2: Artifact Analysis
 
 ### Actions Taken & Investigation Tools Used
-1.  **Email Origin Verification (Reverse DNS):**
-    *   **Action:** Performed a Reverse DNS (rDNS) lookup on the sending server IP address (`209.85.222.173`).
-    *   **Tool / Finding:** Confirmed the pointer record points to `://google.com`. This verifies the email originated from legitimate Google (Gmail) infrastructure rather than official Microsoft exchange environments, exposing explicit external masquerading.
-2.  **Visual and Intent Inspection (URL2PNG):**
-    *   **Action:** Submitted the embedded link to URL2PNG to safely inspect the web layout without risking direct browser exposure or session tracking.
-    *   **Tool / Finding:** The sandbox capture revealed a spoofed interface mimicking an **Outlook Web Access (OWA)** portal, confirming active credential harvesting intent.
-3.  **Reputation and Threat Intelligence Triage (VirusTotal):**
-    *   **Action:** Checked the reputation of the malicious root domain (`emailsecalerts[.]net`) against threat intelligence aggregators.
-    *   **Tool / Finding:** VirusTotal flagged the domain for malicious and phishing behavior, validating that the infrastructure is known threat actor infrastructure.
+
+1. **Email Origin Verification (Reverse DNS):**
+   * **Action:** Performed a Reverse DNS (rDNS) lookup on the sending server IP address (`209.85.222.173`).
+   * **Tool / Finding:** Confirmed the pointer record points to `://google.com`. This verifies the email originated from legitimate Google (Gmail) infrastructure rather than official Microsoft Exchange environments, exposing explicit external masquerading. *(Visual Evidence saved in `evidence/headers/rdns_lookup.png`)*
+
+2. **Reputation and Threat Intelligence Triage (VirusTotal):**
+   * **Action:** Checked the historical and live reputation of the malicious root domain (`emailsecalerts[.]net`) against threat intelligence aggregators.
+   * **Tool / Finding:** VirusTotal flagged the domain for active malicious and phishing behavior, validating that the underlying infrastructure is known threat actor infrastructure. *(Visual Evidence saved in `evidence/sandbox_results/virustotal_reputation.png`, `evidence/sandbox_results/virustotal_reputation2.png`)*
+
+3. **Active Visual & Intent Inspection (Perimeter URL Check):**
+   * **Action:** Attempted to pull an isolated web screenshot of the landing page endpoint using web triage utilities to confirm layout configuration.
+   * **Tool / Finding:** The target site failed to resolve, experiencing a persistent network timeout. This indicates the malicious hosting setup or the explicit URL path was actively taken down or dismantled by upstream network providers prior to final incident closure. 
 
 ---
 
-### Analysis Results and Findings
-*   **Infrastructure Verdict:** The root domain `emailsecalerts[.]net` is classified as **Malicious**. Threat intelligence history and sandbox analysis prove this domain exists purely to host deceptive landing pages designed for credential harvesting.
+### Analysis Results
+
+* **Infrastructure Verdict:** The root domain `emailsecalerts[.]net` is classified as **Malicious**. Even though the live URL endpoint is down due to a successful infrastructure takedown, threat intelligence history proves this domain was registered and deployed purely to host deceptive web applications designed for credential harvesting.
+*
   
 
 ---
