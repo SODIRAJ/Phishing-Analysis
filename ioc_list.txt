@@ -1,0 +1,33 @@
+################################################################################
+# PHISHING CAMPAIGN INDICATORS OF COMPROMISE (IoCs)
+# Target Environment: Dickson United (M365 / Outlook Users)
+# Campaign Theme    : Spoofed Outlook Security Alert
+# Threat Type       : Credential Harvesting Portal
+# Status            : Defanged for Safe Repository Documentation
+################################################################################
+
+[EMAIL SENDER ALIAS / ORIGIN]
+emailsecalert1[@]gmail[.]com
+
+[MALICIOUS INFRASTRUCTURE IPs]
+209[.]85[.]222[.]173
+
+[REVERSE DNS (rDNS) INFRASTRUCTURE]
+mail-qk1-f173[.]google[.]com
+
+[MALICIOUS TARGET ROOT DOMAINS]
+emailsecalerts[.]net
+
+[FULL CREDENTIAL HARVESTING TARGET URLs]
+hxxps://outlook-security[.]emailsecalerts[.]net/index/2020/OWA[.]php?
+
+[TARGETED CORPORATE RECIPIENTS - FOR INTERNAL MONITORING]
+john[.]smith[@]dicksonunited[.]co[.]uk
+alice[.]cooper[@]dicksonunited[.]co[.]uk
+jacon[.]long[@]dicksonunited[.]co[.]uk
+fred[.]johnson[@]dicksonunited[.]co[.]uk
+pickle[.]rick[@]dicksonunited[.]co[.]uk
+
+################################################################################
+# END OF SEGMENT 
+################################################################################
