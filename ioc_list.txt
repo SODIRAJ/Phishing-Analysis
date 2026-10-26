@@ -9,10 +9,10 @@
 [EMAIL SENDER ALIAS / ORIGIN]
 emailsecalert1[@]gmail[.]com
 
-[MALICIOUS INFRASTRUCTURE IPs]
+[MALICIOUS  IPs]
 209[.]85[.]222[.]173
 
-[REVERSE DNS (rDNS) INFRASTRUCTURE]
+[REVERSE DNS (rDNS) ]
 mail-qk1-f173[.]google[.]com
 
 [MALICIOUS TARGET ROOT DOMAINS]
@@ -28,6 +28,3 @@ jacon[.]long[@]dicksonunited[.]co[.]uk
 fred[.]johnson[@]dicksonunited[.]co[.]uk
 pickle[.]rick[@]dicksonunited[.]co[.]uk
 
-################################################################################
-# END OF SEGMENT 
-################################################################################
