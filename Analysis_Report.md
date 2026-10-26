@@ -43,17 +43,12 @@ The suspicious message is themed as a critical security alert masquerading as an
 3.  **Reputation and Threat Intelligence Triage (VirusTotal):**
     *   **Action:** Checked the reputation of the malicious root domain (`emailsecalerts[.]net`) against threat intelligence aggregators.
     *   **Tool / Finding:** VirusTotal flagged the domain for malicious and phishing behavior, validating that the infrastructure is known threat actor infrastructure.
-4.  **Internal Impact Assessment (SIEM and EDR Log Auditing):**
-    *   **Action:** Queried centralized SIEM and Endpoint Detection & Response (EDR) logs using the malicious URL/domain strings, and reviewed email gateway records for inbound/outbound responses.
-    *   **Tool / Finding:** Cross-referenced traffic and mailbox data to identify potential exposure or compromise within the network.
 
 ---
 
 ### Analysis Results and Findings
 *   **Infrastructure Verdict:** The root domain `emailsecalerts[.]net` is classified as **Malicious**. Threat intelligence history and sandbox analysis prove this domain exists purely to host deceptive landing pages designed for credential harvesting.
-*   **Scope of Impact:** Internal security logging confirmed that while the phishing campaign targeted 5 distinct corporate mailboxes (`john.smith`, `alice.cooper`, `jacon.long`, `fred.johnson`, and `pickle.rick`), **no users clicked on the link or created a network session with the malicious domain**.
-*   **Communication Audit:** Email gateway logs indicate that zero users have replied to the malicious external address (`emailsecalert1@gmail.com`). 
-*   **Final Assessment:** The attack failed to achieve execution. There is zero evidence of network infiltration, user data exposure, or active host compromise.
+  
 
 ---
 
@@ -62,12 +57,10 @@ The suspicious message is themed as a critical security alert masquerading as an
 ### Remediation and Containment Actions
 
 1.  **Network-Layer Defenses (DNS & Web Proxy Blocklisting):**
-    *   Implement an immediate block on the root domain `emailsecalerts[.]net` and all associated subdomains across the corporate web proxy and secure DNS gateway (e.g., Cisco Umbrella, Zscaler). This ensures that even if a user tries to click the link later, the connection will be dropped safely at the perimeter.
+    *   Implement an immediate block on the root domain `emailsecalerts[.]net` and all associated subdomains across the corporate web proxy and secure DNS gateway. This ensures that even if a user tries to click the link later, the connection will be dropped safely at the perimeter.
 2.  **Email Gateway Restrictions (Inbound Mail Controls):**
     *   Add the specific malicious URL string (`hxxps://outlook-security.emailsecalerts[.]net/index/2020/OWA.php?`) to the email gateway filter rule to block future delivery attempts.
     *   Add the specific sender address `emailsecalert1@gmail.com` to the tenant blocklist.
-3.  **Active Mailbox Quarantine:**
-    *   Execute an administrative purge across the email environment to permanently remove the phishing message from the 5 targeted user inboxes (`john.smith`, `alice.cooper`, `jacon.long`, `fred.johnson`, and `pickle.rick`) to eliminate the risk of delayed interactions.
 
 ---
 
