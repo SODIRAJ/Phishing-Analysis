@@ -1,6 +1,6 @@
 # Phishing Analysis Immediate Response Playbook
 
-This playbook outlines the standard operational procedure for triaging, investigating, and responding to suspected phishing emails within the SOC environment.
+This playbook outlines the standard operational procedure I used for triaging, investigating, and responding to this suspected phishing emails.
 
 ---
 
